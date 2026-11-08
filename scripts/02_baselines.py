@@ -33,8 +33,9 @@ def run_plant(plant, cfg, fig_dir, res_dir):
         # 持久性基线：y(t+h) = y(t)
         p_pers = predict_persistence(x_te["ac_now"], cfg["horizon_steps"])
         preds["Persistence"] = p_pers
-        # 槽均值基线
-        p_slot = predict_slot_mean(pl.assign(ac_power=pl["ac_power"]), m_te["target_dt"])
+        # 槽均值基线（仅用训练期统计，防测试泄漏）
+        train_pl = pl[pl["dt"].dt.normalize() <= m_tr["target_dt"].dt.normalize().max()]
+        p_slot = predict_slot_mean(train_pl, m_te["target_dt"])
         preds["SlotMean"] = p_slot
 
         ridge = train_ridge(x_tr, y_tr, cfg["ridge_alpha"])

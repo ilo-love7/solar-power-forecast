@@ -159,3 +159,74 @@ def plot_train_curves(history: list[dict], plant: str, regime: str, out_dir: Pat
     ax.set_ylabel("val RMSE")
     ax.set_title(f"{plant}/{regime} LSTM 训练曲线")
     return _save(fig, out_dir / f"{plant}_{regime}_lstm_curve.png")
+
+
+# ---------- v1.1：多提前量 / 跨站迁移 / 分位数 ----------
+
+def plot_horizon_curves(df: pd.DataFrame, plant: str, out_dir: Path) -> str:
+    """nRMSE 随提前量退化曲线（df: horizon_min, model, regime, nrmse_pct）。"""
+    fig, ax = plt.subplots(figsize=(6.2, 3.6))
+    for (model, regime), g in df.groupby(["model", "regime"]):
+        g = g.sort_values("horizon_min")
+        label = model if model == "Persistence" else f"{model}/{regime}"
+        ax.plot(g["horizon_min"], g["nrmse_pct"], "o-", ms=4, label=label)
+    ax.set_xscale("log")
+    ax.set_xticks(sorted(df["horizon_min"].unique()))
+    ax.get_xaxis().set_major_formatter(plt.FuncFormatter(lambda v, _: f"{v:g}"))
+    ax.set_xlabel("提前量 (分钟, log)")
+    ax.set_ylabel("nRMSE (% 容量)")
+    ax.set_title(f"{plant} 预测误差随提前量退化")
+    ax.grid(alpha=0.3)
+    ax.legend(fontsize=8)
+    return _save(fig, out_dir / f"{plant}_horizon_decay.png")
+
+
+def plot_transfer_bars(df: pd.DataFrame, out_dir: Path) -> str:
+    """跨站迁移对比条形图（df: direction, variant, nrmse_pct）。"""
+    fig, ax = plt.subplots(figsize=(7.2, 3.6))
+    variants = list(dict.fromkeys(df["variant"]))
+    dirs = list(dict.fromkeys(df["direction"]))
+    width = 0.8 / max(1, len(dirs))
+    xs = np.arange(len(variants))
+    for i, d in enumerate(dirs):
+        g = df[df["direction"] == d].set_index("variant")
+        vals = [g.loc[v, "nrmse_pct"] if v in g.index else np.nan for v in variants]
+        ax.bar(xs + i * width, vals, width=width, label=d)
+    ax.set_xticks(xs + width * (len(dirs) - 1) / 2)
+    ax.set_xticklabels(variants, rotation=20, ha="right")
+    ax.set_ylabel("目标站测试 nRMSE (% 容量)")
+    ax.set_title("跨站迁移：零样本 / 容量归一化 / 少样本适配 vs 域内")
+    ax.legend()
+    ax.grid(axis="y", alpha=0.3)
+    return _save(fig, out_dir / "cross_plant_transfer.png")
+
+
+def plot_quantile_bands(y_true, lo, hi, target_dt, plant: str, out_dir: Path, days: int = 3) -> str:
+    """测试集前若干天的预测区间可视化。"""
+    d = pd.DataFrame({"dt": pd.to_datetime(target_dt), "y": y_true, "lo": lo, "hi": hi})
+    d = d.sort_values("dt")
+    start = d["dt"].min()
+    sel = d[d["dt"] < start + pd.Timedelta(days=days)]
+    fig, ax = plt.subplots(figsize=(8, 3.2))
+    ax.fill_between(sel["dt"], sel["lo"] / 1000, sel["hi"] / 1000, alpha=0.3, color="C0", label="q10–q90 区间")
+    ax.plot(sel["dt"], sel["y"] / 1000, "k-", lw=1.2, label="真实")
+    ax.set_xlabel("时间")
+    ax.set_ylabel("AC 功率 (kW)")
+    ax.set_title(f"{plant} 分位数预测区间（测试集前 {days} 天）")
+    ax.legend()
+    fig.autofmt_xdate()
+    return _save(fig, out_dir / f"{plant}_quantile_bands.png")
+
+
+def plot_coverage_by_bucket(df: pd.DataFrame, plant: str, out_dir: Path) -> str:
+    """按辐照桶的区间覆盖率（df: bucket, coverage, n）。"""
+    fig, ax = plt.subplots(figsize=(5.6, 3.2))
+    ax.bar(df["bucket"].astype(str), df["coverage"], color="C0", alpha=0.85)
+    ax.axhline(0.8, color="r", ls="--", lw=1, label="名义 80%")
+    ax.set_ylim(0, 1.05)
+    ax.set_xlabel("目标时刻辐照桶 (kW/m²)")
+    ax.set_ylabel("q10–q90 经验覆盖率")
+    ax.set_title(f"{plant} 区间覆盖率按辐照分桶")
+    ax.tick_params(axis="x", rotation=20)
+    ax.legend()
+    return _save(fig, out_dir / f"{plant}_coverage_by_bucket.png")

@@ -66,3 +66,26 @@ def grouped_metrics(
     for g, idx in groups.groupby(groups, observed=True).groups.items():
         rows.append({"bucket": str(g), **metric_pack(yt.loc[idx], yp.loc[idx], capacity)})
     return pd.DataFrame(rows).sort_values("bucket").reset_index(drop=True)
+
+
+# ---------- 分位数 / 区间指标 ----------
+
+def pinball_loss(y_true, y_pred, q: float) -> float:
+    """分位数 q 的 pinball（quantile）损失。"""
+    yt = np.asarray(y_true, dtype=np.float64)
+    yp = np.asarray(y_pred, dtype=np.float64)
+    d = yt - yp
+    return float(np.mean(np.maximum(q * d, (q - 1.0) * d)))
+
+
+def interval_coverage(y_true, lo, hi) -> float:
+    """经验覆盖率：y ∈ [lo, hi] 的比例。"""
+    yt = np.asarray(y_true, dtype=np.float64)
+    lo_a = np.asarray(lo, dtype=np.float64)
+    hi_a = np.asarray(hi, dtype=np.float64)
+    return float(np.mean((yt >= lo_a) & (yt <= hi_a)))
+
+
+def interval_width(lo, hi) -> float:
+    """平均区间宽度。"""
+    return float(np.mean(np.asarray(hi, dtype=np.float64) - np.asarray(lo, dtype=np.float64)))

@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 
 from solar_diag.evaluation import (
-    bucket_by_daypart, bucket_by_irradiation, grouped_metrics, mae, metric_pack, nrmse_pct, r2, rmse,
+    bucket_by_daypart, bucket_by_irradiation, grouped_metrics, interval_coverage, interval_width,
+    mae, metric_pack, nrmse_pct, pinball_loss, r2, rmse,
 )
 
 
@@ -49,3 +50,20 @@ def test_grouped_metrics():
 def test_metric_pack_keys():
     m = metric_pack([1.0, 2.0], [1.0, 2.0], 2.0)
     assert set(m) == {"rmse", "mae", "r2", "nrmse_pct", "n"}
+
+
+def test_pinball_loss():
+    y = np.array([10.0, 10.0])
+    p = np.array([8.0, 12.0])  # 低估 2 / 高估 2
+    # q=0.1：低估损失 0.1*2=0.2，高估损失 0.9*2=1.8 → 均值 1.0
+    assert np.isclose(pinball_loss(y, p, 0.1), 1.0)
+    assert np.isclose(pinball_loss(y, y, 0.5), 0.0)
+
+
+def test_interval_coverage_width():
+    y = np.array([0.0, 5.0, 10.0])
+    lo = np.array([-1.0, 4.0, 9.0])
+    hi = np.array([1.0, 6.0, 11.0])
+    assert np.isclose(interval_coverage(y, lo, hi), 1.0)
+    assert np.isclose(interval_width(lo, hi), 2.0)
+    assert np.isclose(interval_coverage(np.array([20.0]), [0.0], [1.0]), 0.0)
