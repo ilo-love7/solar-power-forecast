@@ -1,0 +1,288 @@
+{
+  "Plant_1": {
+    "n_inverters": 22,
+    "n_flagged": 2,
+    "n_critical": 1,
+    "n_warning": 1,
+    "scale_anomaly": "站级 DC/AC 中位效率 0.0979 ≪ 1，疑似 DC 通道量纲偏大（×10.2）",
+    "eff_median_fleet": 0.09785140683553359,
+    "flagged": [
+      {
+        "SOURCE_KEY": "bvBOhCH3iADSZry",
+        "severity": 2,
+        "reasons": "eff_z=5.8;static_loss_z=-5.4",
+        "completeness": 0.9666053921568627,
+        "outage_events": 4,
+        "outage_slots": 16,
+        "eff_med": 0.09788349291775521,
+        "slope": 0.097670026300279,
+        "intercept": 0.9194090470220512
+      },
+      {
+        "SOURCE_KEY": "1BY6WEcLGh8j5v7",
+        "severity": 1,
+        "reasons": "eff_z=4.3;static_loss_z=-4.3",
+        "completeness": 0.9662990196078431,
+        "outage_events": 4,
+        "outage_slots": 15,
+        "eff_med": 0.09787538174181434,
+        "slope": 0.09765184389130875,
+        "intercept": 0.9750635849175825
+      }
+    ],
+    "csv": "D:\\项目\\01_在研项目\\光伏功率预测-N3\\results\\inverter_diagnosis_Plant_1.csv"
+  },
+  "Plant_2": {
+    "n_inverters": 22,
+    "n_flagged": 22,
+    "n_critical": 14,
+    "n_warning": 8,
+    "scale_anomaly": null,
+    "eff_median_fleet": 0.9790976488615033,
+    "flagged": [
+      {
+        "SOURCE_KEY": "Et9kgGMDl729KT4",
+        "severity": 2,
+        "reasons": "outage=272slots/34次;static_loss_z=-3.5",
+        "completeness": 0.9788602941176471,
+        "outage_events": 34,
+        "outage_slots": 272,
+        "eff_med": 0.9796578006235075,
+        "slope": 0.9766050335335921,
+        "intercept": 1.2460381466821946
+      },
+      {
+        "SOURCE_KEY": "LYwnQax7tkwH5Cb",
+        "severity": 2,
+        "reasons": "outage=258slots/25次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 25,
+        "outage_slots": 258,
+        "eff_med": 0.9795153988948613,
+        "slope": 0.9763197943704685,
+        "intercept": 1.372912680490625
+      },
+      {
+        "SOURCE_KEY": "Quc1TzYxW2pYoWX",
+        "severity": 2,
+        "reasons": "outage=253slots/36次;eff_z=4.2;static_loss_z=-5.9",
+        "completeness": 0.9788602941176471,
+        "outage_events": 36,
+        "outage_slots": 253,
+        "eff_med": 0.9798197863405047,
+        "slope": 0.9776759708009772,
+        "intercept": 0.8289305326320515
+      },
+      {
+        "SOURCE_KEY": "rrq4fwE8jgrTyWY",
+        "severity": 2,
+        "reasons": "outage=223slots/25次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 25,
+        "outage_slots": 223,
+        "eff_med": 0.9794581812573895,
+        "slope": 0.9760928533771713,
+        "intercept": 1.4655039875887097
+      },
+      {
+        "SOURCE_KEY": "q49J1IKaHRwDQnt",
+        "severity": 2,
+        "reasons": "outage=199slots/22次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 22,
+        "outage_slots": 199,
+        "eff_med": 0.9792696937908986,
+        "slope": 0.9757413283531039,
+        "intercept": 1.5958172429166997
+      },
+      {
+        "SOURCE_KEY": "81aHJ1q11NBPMrL",
+        "severity": 2,
+        "reasons": "outage=180slots/26次;rel_yield_z=-4.1",
+        "completeness": 0.9984681372549019,
+        "outage_events": 26,
+        "outage_slots": 180,
+        "eff_med": 0.9791376524984681,
+        "slope": 0.9752111747682716,
+        "intercept": 1.81961997388749
+      },
+      {
+        "SOURCE_KEY": "LlT2YUhhzqhg5Sw",
+        "severity": 2,
+        "reasons": "outage=161slots/17次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 17,
+        "outage_slots": 161,
+        "eff_med": 0.979117419579734,
+        "slope": 0.9753283610741502,
+        "intercept": 1.7931486170651114
+      },
+      {
+        "SOURCE_KEY": "9kRcWv60rDACzjR",
+        "severity": 2,
+        "reasons": "outage=160slots/15次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 15,
+        "outage_slots": 160,
+        "eff_med": 0.9791040490092849,
+        "slope": 0.9752964581774323,
+        "intercept": 1.7931072724825503
+      },
+      {
+        "SOURCE_KEY": "WcxssY2VbP4hApt",
+        "severity": 2,
+        "reasons": "outage=157slots/14次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 14,
+        "outage_slots": 157,
+        "eff_med": 0.9789781047654335,
+        "slope": 0.9749199989713262,
+        "intercept": 1.898451632776659
+      },
+      {
+        "SOURCE_KEY": "xoJJ8DcxJEcupym",
+        "severity": 2,
+        "reasons": "outage=154slots/27次;rel_yield_z=-4.2",
+        "completeness": 0.9984681372549019,
+        "outage_events": 27,
+        "outage_slots": 154,
+        "eff_med": 0.9791489609406835,
+        "slope": 0.9753148489791692,
+        "intercept": 1.745661221060061
+      },
+      {
+        "SOURCE_KEY": "NgDl19wMapZy17u",
+        "severity": 2,
+        "reasons": "completeness=0.72;outage=27slots/6次",
+        "completeness": 0.7215073529411765,
+        "outage_events": 6,
+        "outage_slots": 27,
+        "eff_med": 0.9790925547345029,
+        "slope": 0.9749929820728522,
+        "intercept": 1.9310764835145042
+      },
+      {
+        "SOURCE_KEY": "mqwcsP2rE7J0TFp",
+        "severity": 2,
+        "reasons": "completeness=0.72",
+        "completeness": 0.7215073529411765,
+        "outage_events": 7,
+        "outage_slots": 21,
+        "eff_med": 0.979116979567304,
+        "slope": 0.9750392428822248,
+        "intercept": 1.8950261504437884
+      },
+      {
+        "SOURCE_KEY": "IQ2d7wF4YD8zU1Q",
+        "severity": 2,
+        "reasons": "completeness=0.72",
+        "completeness": 0.7215073529411765,
+        "outage_events": 2,
+        "outage_slots": 11,
+        "eff_med": 0.9789879744686035,
+        "slope": 0.9748304394906046,
+        "intercept": 2.0130978476031713
+      },
+      {
+        "SOURCE_KEY": "xMbIugepa2P7lBB",
+        "severity": 2,
+        "reasons": "completeness=0.72",
+        "completeness": 0.7215073529411765,
+        "outage_events": 2,
+        "outage_slots": 11,
+        "eff_med": 0.9790479341941398,
+        "slope": 0.9749300072519271,
+        "intercept": 1.9620290442947041
+      },
+      {
+        "SOURCE_KEY": "V94E5Ben1TlhnDV",
+        "severity": 1,
+        "reasons": "outage=132slots/18次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 18,
+        "outage_slots": 132,
+        "eff_med": 0.9790245233732309,
+        "slope": 0.9749934963023695,
+        "intercept": 1.9247633201518277
+      },
+      {
+        "SOURCE_KEY": "vOuJvMaM2sgwLmb",
+        "severity": 1,
+        "reasons": "outage=132slots/19次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 19,
+        "outage_slots": 132,
+        "eff_med": 0.9788031889181406,
+        "slope": 0.9744802424648202,
+        "intercept": 2.0601440293080424
+      },
+      {
+        "SOURCE_KEY": "oZZkBaNadn6DNKz",
+        "severity": 1,
+        "reasons": "outage=126slots/21次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 21,
+        "outage_slots": 126,
+        "eff_med": 0.9790203864401451,
+        "slope": 0.9751659240328642,
+        "intercept": 1.8314853711547354
+      },
+      {
+        "SOURCE_KEY": "PeE6FRyGXUgsRhN",
+        "severity": 1,
+        "reasons": "outage=124slots/27次",
+        "completeness": 0.9984681372549019,
+        "outage_events": 27,
+        "outage_slots": 124,
+        "eff_med": 0.9791027429885039,
+        "slope": 0.975291908530294,
+        "intercept": 1.7741267189450938
+      },
+      {
+        "SOURCE_KEY": "oZ35aAeoifZaQzV",
+        "severity": 1,
+        "reasons": "outage=103slots/14次",
+        "completeness": 0.9788602941176471,
+        "outage_events": 14,
+        "outage_slots": 103,
+        "eff_med": 0.9788541340928489,
+        "slope": 0.9748339844450514,
+        "intercept": 1.9999863947540977
+      },
+      {
+        "SOURCE_KEY": "4UPUqMRk7TRMgml",
+        "severity": 1,
+        "reasons": "outage=98slots/15次;rel_yield_z=-3.6",
+        "completeness": 0.9788602941176471,
+        "outage_events": 15,
+        "outage_slots": 98,
+        "eff_med": 0.9788370335301789,
+        "slope": 0.974863422201521,
+        "intercept": 1.9831384178143567
+      },
+      {
+        "SOURCE_KEY": "Qf4GUc1pJu5T6c6",
+        "severity": 1,
+        "reasons": "outage=94slots/13次",
+        "completeness": 0.9788602941176471,
+        "outage_events": 13,
+        "outage_slots": 94,
+        "eff_med": 0.978843465224788,
+        "slope": 0.9748403251037437,
+        "intercept": 1.9917491502121953
+      },
+      {
+        "SOURCE_KEY": "Mx2yZCDsyf6DPfv",
+        "severity": 1,
+        "reasons": "outage=80slots/13次",
+        "completeness": 0.9788602941176471,
+        "outage_events": 13,
+        "outage_slots": 80,
+        "eff_med": 0.978799107092271,
+        "slope": 0.9748250932322042,
+        "intercept": 2.0064092783779284
+      }
+    ],
+    "csv": "D:\\项目\\01_在研项目\\光伏功率预测-N3\\results\\inverter_diagnosis_Plant_2.csv"
+  }
+}

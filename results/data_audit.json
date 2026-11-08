@@ -1,0 +1,40 @@
+{
+  "raw_dir": "D:\\项目\\02_数据集\\01_国际公开集\\Solar_Kaggle\\raw",
+  "plants": {
+    "Plant_1": {
+      "gen_cols_ok": true,
+      "wthr_cols_ok": true,
+      "gen_rows": 68778,
+      "wthr_rows": 3182,
+      "inverters": 22,
+      "gen_dt_min": "2020-05-15 00:00:00",
+      "gen_dt_max": "2020-06-17 23:45:00",
+      "gen_dup_rows": 0,
+      "gen_nulls": 0,
+      "dc_zero_frac": 0.46455261856989155,
+      "gen_rows_ok": true,
+      "wthr_rows_ok": true,
+      "inverters_ok": true,
+      "dup_ok": true,
+      "passed": true
+    },
+    "Plant_2": {
+      "gen_cols_ok": true,
+      "wthr_cols_ok": true,
+      "gen_rows": 67698,
+      "wthr_rows": 3259,
+      "inverters": 22,
+      "gen_dt_min": "2020-05-15 00:00:00",
+      "gen_dt_max": "2020-06-17 23:45:00",
+      "gen_dup_rows": 0,
+      "gen_nulls": 0,
+      "dc_zero_frac": 0.5267807025318325,
+      "gen_rows_ok": true,
+      "wthr_rows_ok": true,
+      "inverters_ok": true,
+      "dup_ok": true,
+      "passed": true
+    }
+  },
+  "all_passed": true
+}

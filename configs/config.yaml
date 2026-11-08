@@ -1,0 +1,46 @@
+# N3 光伏功率预测与损失诊断配置
+data_root: "D:/项目/02_数据集/01_国际公开集/Solar_Kaggle"
+raw_subdir: "raw"
+plants: ["Plant_1", "Plant_2"]
+
+# 预测任务：用 t 时刻特征预测 t+horizon 的电站级 AC 功率
+horizon_steps: 4        # 1 小时 = 4 × 15min
+history: 16             # LSTM 输入窗口（4 小时）
+train_frac: 0.70        # 按时间顺序切天：train/val/test
+val_frac: 0.15
+capacity_q: 0.99        # 额定容量代理 = 站级 AC 功率分位数
+
+# 训练
+seeds: [0, 1, 2]
+ridge_alpha: 1.0
+lgbm:
+  n_estimators: 400
+  learning_rate: 0.05
+  num_leaves: 31
+  min_child_samples: 20
+xgboost:
+  n_estimators: 400
+  learning_rate: 0.05
+  max_depth: 6
+lstm:
+  hidden: 64
+  layers: 1
+  dropout: 0.1
+  lr: 0.001
+  batch: 64
+  epochs: 30
+  patience: 5
+
+# 逆变器诊断
+dc_day_min: 100.0       # 白天判定 DC 阈值（W）
+outage_irr_min: 0.5     # 停机事件辐照阈值（kW/m2）
+outage_fleet_min: 200.0 # 全队同刻中位 AC 阈值（W）
+outage_self_frac: 0.05  # 自身 AC < 5% × 全队中位 → 记一次停机
+mad_z_flag: 3.5         # MAD 稳健 z 分数告警阈值
+slots_expected: 3264    # 34 天 × 96 槽/天
+completeness_min: 0.90  # 槽位完整率告警线
+outage_slots_min: 24    # 白天停机总槽位告警线（24×15min=6h）
+
+# 误差归因
+irr_bins: [0.0, 0.2, 0.5, 0.8, 999.0]
+daytime_irr_min: 0.05   # 白天误差评估的辐照阈值

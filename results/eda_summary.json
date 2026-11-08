@@ -1,0 +1,40 @@
+{
+  "Plant_1": {
+    "n_plant_slots": 3158,
+    "time_range": [
+      "2020-05-15 00:00:00",
+      "2020-06-17 23:45:00"
+    ],
+    "ac_max_w": 29150.212499000005,
+    "ac_mean_day_w": 14874.711024905208,
+    "irr_max": 1.2216518466666668,
+    "daily_energy_kwh_mean": 155.6621889361597,
+    "ac_irr_corr": 0.9953969610089877,
+    "figures": [
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_1_daily_profile.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_1_daily_energy.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_1_irr_scatter.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_1_corr.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_1_missing_heatmap.png"
+    ]
+  },
+  "Plant_2": {
+    "n_plant_slots": 3259,
+    "time_range": [
+      "2020-05-15 00:00:00",
+      "2020-06-17 23:45:00"
+    ],
+    "ac_max_w": 25979.760476190477,
+    "ac_mean_day_w": 11431.977422110936,
+    "irr_max": 1.098766043,
+    "daily_energy_kwh_mean": 120.10313390037045,
+    "ac_irr_corr": 0.9110837999867101,
+    "figures": [
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_2_daily_profile.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_2_daily_energy.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_2_irr_scatter.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_2_corr.png",
+      "D:\\项目\\01_在研项目\\光伏功率预测-N3\\figures\\Plant_2_missing_heatmap.png"
+    ]
+  }
+}
